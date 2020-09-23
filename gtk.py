@@ -69,8 +69,11 @@ class GameRenderer:
                 fill = "green"
 
                 if val > 0:
-                    fill="green"
+                    fill="white"
                 
+                if val == game._score:
+                    fill="green"
+
                 if val < 0:
                     fill="red"
 
