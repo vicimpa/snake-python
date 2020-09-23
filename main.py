@@ -8,8 +8,15 @@ from gsnake import SnakeGame
 from gtk import GameRenderer
 import threading
 
-game = SnakeGame(20, 20, 7)
-render = GameRenderer(game)
+game = SnakeGame(20, 20, 5)
+game.pushApple()
 game.pushSnake()
+
+render = GameRenderer(game)
 render.render()
 render.mainloop()
+
+# score = 3
+
+
+# 0 0 4 3 2 1 0 0 0

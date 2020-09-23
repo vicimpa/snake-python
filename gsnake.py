@@ -12,7 +12,9 @@ class SnakeGame:
         self._prevDir = self._dir.clone()
 
     def setDir(self, dir: Directions):
-        if dir.value.clone().mul(-1).notEqually(self._prevDir):
+        val = dir.value.clone()
+
+        if val.mul(-1).notEqually(self._prevDir):
             self._dir = dir.value
 
     def getSize(self):
@@ -89,12 +91,31 @@ class SnakeGame:
             if newVal < 0:
                 self._score += 1
                 map.setValueOfPosition(newPosition, self._score)
+
+                if map.getCountOfValue(-1) == 0:
+                    self.pushApple()
+                    
                 return
 
         map.moveValueOfPosition(nowPosition, newPosition)
 
         if score > 0:
             self.loop(score-1, nowPosition)
+
+    def pushApple(self):
+        map = self._map
+
+        pos = []
+
+        for i in range(map._size):
+            val = map.getValueOfIndex(i)
+
+            if val == 0:
+                pos.append(i)
+
+
+        rand = randint(0, len(pos) - 1)
+        map.setValueOfIndex(pos[rand], -1)
         
 
     def getRenderMap(self):

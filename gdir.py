@@ -9,7 +9,6 @@ class Directions(Enum):
     BOTTOM = Vec2(0, 1)
 
     @staticmethod
-
     def randomValue():
         directions = []
 
