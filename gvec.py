@@ -1,6 +1,6 @@
 class Vec2:
     def __str__(self):
-        return 'Vec2(x: ' + str(self.x) + ', y: ' + str(self.y) + ')'
+        return '<Vec2 x=' + str(self.x) + ' y=' + str(self.y) + '>'
 
     def __init__(self, x: int = 0, y: int = 0):
         d = convertVec(x, y)

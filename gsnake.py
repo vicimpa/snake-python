@@ -122,10 +122,10 @@ class SnakeGame:
         outRender = []
         map = self._map
 
-        for y in range(0, self._map._height):
+        for y in range(0, map._height):
             row = []
 
-            for x in range(0, self._map._width):
+            for x in range(0, map._width):
                 vec = Vec2(x, y)
                 ind = map.getIndexOfPosition(vec)
                 val = map.getValueOfIndex(ind)
