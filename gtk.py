@@ -85,3 +85,5 @@ class GameRenderer:
                 x += size
 
             y += size
+
+        canvas.create_text(10, 10, text='Score: ' + str(game._score), justify=tk.LEFT, anchor=tk.NW)
