@@ -3,7 +3,6 @@ import tkinter as tk
 from gsnake import SnakeGame
 from gdir import Directions
 
-
 class GameRenderer:
     def __init__(self, game: SnakeGame, name="SnakeGame"):
         self._game = game

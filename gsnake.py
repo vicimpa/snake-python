@@ -3,7 +3,6 @@ from gvec import Vec2
 from gdir import Directions
 from random import randint
 
-
 class SnakeGame:
     def __init__(self, width=10, height=10, score=4):
         self._map = GameMap(width, height)
@@ -53,7 +52,6 @@ class SnakeGame:
             map.setValueOfIndex(c[0], c[1])
 
         self._score -= score
-
 
     def loop(self, score=None, newPosition=None):
         map = self._map
@@ -117,7 +115,6 @@ class SnakeGame:
         rand = randint(0, len(pos) - 1)
         map.setValueOfIndex(pos[rand], -1)
         
-
     def getRenderMap(self):
         outRender = []
         map = self._map
