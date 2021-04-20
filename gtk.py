@@ -1,7 +1,22 @@
 import tkinter as tk
+from tkinter.constants import NONE
 
 from gsnake import SnakeGame
 from gdir import Directions
+
+keys = {
+    'w': Directions.UP,
+    'Up': Directions.UP,
+    
+    'a': Directions.LEFT,
+    'Left': Directions.LEFT,
+
+    'd': Directions.RIGHT,
+    'Right': Directions.RIGHT,
+
+    's': Directions.BOTTOM,
+    'Down': Directions.BOTTOM
+}
 
 class GameRenderer:
     def __init__(self, game: SnakeGame, name="SnakeGame"):
@@ -21,18 +36,10 @@ class GameRenderer:
     def keyPress(self, e):
         key = e.keysym
         game = self._game
+        dir = keys.get(key)
 
-        if key == 'w' or key == 'Up':
-            game.setDir(Directions.UP)
-
-        if key == 'a' or key == 'Left':
-            game.setDir(Directions.LEFT)
-
-        if key == 'd' or key == 'Right':
-            game.setDir(Directions.RIGHT)
-
-        if key == 's' or key == 'Down':
-            game.setDir(Directions.BOTTOM)
+        if not dir is None:
+            game.setDir(dir)
 
     def loop(self):
         root = self._root
