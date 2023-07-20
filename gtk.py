@@ -19,6 +19,8 @@ keys = {
 }
 
 class GameRenderer:
+    _colors=["cyan", "yellow", "magenta"]
+
     def __init__(self, game: SnakeGame, name="SnakeGame"):
         self._game = game
         self._work = False
@@ -29,7 +31,7 @@ class GameRenderer:
         geometry = str(size.x+10)+'x'+str(size.y+10)
         root.geometry(geometry)
         canvas = self._canvas = tk.Canvas(
-            root, width=size.x, height=size.y, bg="blue")
+            root, width=size.x, height=size.y, bg="black")
         canvas.pack()
         root.bind("<Key>", lambda e: self.keyPress(e))
 
@@ -48,7 +50,6 @@ class GameRenderer:
             game = self._game
             game.loop()
             self.render()
-
             root.after(200, self.loop)
 
     def mainloop(self):
@@ -56,6 +57,9 @@ class GameRenderer:
         self.loop()
         root = self._root
         root.mainloop()
+
+    def getCurrentColor(self):
+        return self._colors[self._game._score % len(self._colors)]
 
     def render(self):
         game = self._game
@@ -72,10 +76,8 @@ class GameRenderer:
             x = 0
 
             for val in row:
-                fill = "green"
-
                 if val > 0:
-                    fill="white"
+                    fill=self.getCurrentColor()
                 
                 if val == game._score:
                     fill="green"
@@ -83,13 +85,11 @@ class GameRenderer:
                 if val < 0:
                     fill="red"
 
-
                 if val != 0:
                     canvas.create_rectangle(x, y, x+size, y+size, fill=fill)
-
 
                 x += size
 
             y += size
 
-        canvas.create_text(10, 10, text='Score: ' + str(game._score), justify=tk.LEFT, anchor=tk.NW)
+        canvas.create_text(10, 10, text='Score: ' + str(game._score),fill="white", justify=tk.LEFT, anchor=tk.NW)
